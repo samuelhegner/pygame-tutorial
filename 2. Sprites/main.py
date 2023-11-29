@@ -43,7 +43,6 @@ SHIP_HEIGHT = 50
 
 def main():
     print("Initialising pygame!")
-
     pygame.init()
 
     # Setting games icon
@@ -56,9 +55,6 @@ def main():
     # Setting up the game window
     screen = pygame.display.set_mode(size=(SCREEN_WIDTH,SCREEN_HEIGHT))
 
-    # Setting up the fps clock
-    fpsClock = pygame.time.Clock()
-
     # Starting the game loop
     running = True
 
@@ -69,7 +65,6 @@ def main():
     spaceship_group.add(spaceship)
 
     # Setting up the balloons
-
     balloon_group = pygame.sprite.Group()
 
     for n in range(50):
@@ -79,9 +74,8 @@ def main():
         balloon_group.add(balloon)
 
     while running:
-        # Looping over every event that happened this frame
+        # Looping over every event that happened this frame. If the quit event is received, we stop the game loop
         for event in pygame.event.get():
-            # Handling the Quit event
             if event.type == pygame.QUIT:
                 running = False
 
@@ -97,9 +91,6 @@ def main():
 
         # Drawing all changes to the display
         pygame.display.update()
-
-        # Updating the fps clock with our desired fps value
-        fpsClock.tick(FPS)
     
     pygame.quit()
     sys.exit(0)
